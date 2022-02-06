@@ -3,6 +3,7 @@ from datetime import datetime
 import requests
 import pandas as pd
 import time
+import os
 
 
 main_url = 'http://lib.ru/'
@@ -17,6 +18,7 @@ sections = [
     'SOCFANT/', 'INOFANT/', 'RUFANT/',
     'RUSS_DETEKTIW/', 'FILOSOF/'
 ]
+stop_signal = [False]
 
 
 def logging(err_msg: str,
@@ -33,10 +35,28 @@ def get_page(url,
         r = requests.get(url)
         if r.status_code == 200:
             break
+        elif r.status_code == 504:
+            stop_signal[0] = True
     else:
         logging('error on {0}: status code = {1}'.format(url, r.status_code))
         return None
     return r.text
+
+
+def good_str(s: str):
+    """
+        Переписывает строку,
+        оствляя ТОЛЬКО буквы,
+        и переводит ее в lowercase.
+
+        (некоторые имена могут содержать знак '-',
+        который иногда заменяют пробелом,
+        поэтому так)
+    """
+    return ''.join(filter(
+        lambda c: c.isalpha(),
+        s.lower().replace('ё', 'е')
+    ))
 
 
 def right_tag(tag: BeautifulSoup):
@@ -127,11 +147,32 @@ def create_all_tables_books(authors: pd.DataFrame,
                             path_to_save: str = 'tables/books/lib_ru/'):
 
     for i, row in authors.iterrows():
+        if stop_signal[0]:
+            break
         url, author = row['url'], row['author']
         if i < start_n:
             continue
         i = str(i).zfill(6)
         create_table_books(url, i, author, path_to_save)
+
+
+def create_all_books_table(dir_path: str = 'tables/books/lib_ru/',
+                           table_name: str = 'original_books.csv',
+                           table_path: str = 'tables/books/'):
+    names = os.listdir(dir_path)
+    tables = []
+    for name in names:
+        tables.append(
+            pd.read_csv(dir_path + name)
+        )
+    df = pd.concat(tables)
+    df.to_csv(table_path+table_name)
+
+
+"""
+Ниже уже не нужные (вроде бы) методы, 
+но я боюсь их удалять.
+"""
 
 
 def download_book(url: str, book_name: str = None, path_to_save: str = 'library/'):
