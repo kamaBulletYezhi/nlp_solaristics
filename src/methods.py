@@ -1,6 +1,9 @@
 from bs4 import BeautifulSoup
+from datetime import datetime
 import requests
 import pandas as pd
+import time
+
 
 
 main_url = 'http://lib.ru/'
@@ -9,13 +12,18 @@ URL pattern: main_url + section_url + author_url + book_url = url
 """
 
 
-def get_page(url, n_attempts=5):
+def logging(err_msg: str, file: str = 'err'):
+    with open(file, 'a') as err:
+        err.write(f'{err_msg}\n{datetime.now()}\n\n')
+
+
+def get_page(url, n_attempts=1):
     for i in range(n_attempts):
         r = requests.get(url)
         if r.status_code == 200:
             break
     else:
-        print('error on {0}: status code = {1}'.format(url, r.status_code))
+        logging('error on {0}: status code = {1}'.format(url, r.status_code))
         return None
     return r.text
 
@@ -38,46 +46,69 @@ def create_table_authors(url: str, name: str, and_return: bool = False, save: bo
     """
     page = get_page(url)
     soup = BeautifulSoup(page, "html.parser")
-    authors = ((a["href"], ' '.join(a.text.split())) for a in soup.find_all(right_tag))
+    authors = ((url + a["href"], ' '.join(a.text.split()), str(i).zfill(6)) for i, a in enumerate(soup.find_all(right_tag)))
 
-    df = pd.DataFrame(authors, columns=(url, 'author'))
+    df = pd.DataFrame(authors, columns=('url', 'author', 'id'))
     if save:
         df.to_csv(f'tables/authors/{name}.csv')
     if and_return:
         return df
 
 
-def create_table_books(url: str, name: str, and_return: bool = False, save: bool = True):
+def create_all_authors_table(sections: list[str], main_url: str = main_url):
+    tables = []
+    for section in sections:
+        tables.append(
+            create_table_authors(main_url+section, 'None', True, False)
+        )
+    df = pd.concat(tables, ignore_index=True)
+    df.to_csv('tables/authors/lib_ru_authors.csv')
+
+
+def create_table_books(url: str,
+                       table_name: str,
+                       author: str,
+                       path_to_save: str = 'tables/books/',
+                       and_return: bool = False,
+                       save: bool = True, waiting_time: float = 1.):
     """
 
     :param url: str
-        Ссылка на источник.
-    :param name:
-        Имя создаваемой таблицы
+        Ссылка на список книг.
+    :param table_name:
+        Имя создаваемой таблицы.
+    :param author:
+        ФИО автора.
+    :param path_to_save:
+        Директория для сохранения.
     :param and_return: bool
-        Вернуть ли таблицу
+        Вернуть ли таблицу.
     :param save: bool
-        Сохранить ли в файл
+        Сохранить ли в файл.
+    :param waiting_time:
+        Время сна.
     """
+    time.sleep(waiting_time)
     page = get_page(url)
+    if page is None:
+        logging(f'URL "{url}" is not available. Author: {author}.')
+        return None
     soup = BeautifulSoup(page, "html.parser")
-    author = ' '.join(soup.head.title.text.split()[1:])
-    books = ((a["href"], ' '.join(a.text.split()), author) for a in soup.find_all(right_tag))
+    # author = ' '.join(soup.head.title.text.split()[1:])
+    books = ((url + a["href"], ' '.join(a.text.split()), author) for a in soup.find_all(right_tag))
 
-    df = pd.DataFrame(books, columns=(url, 'book', 'author'))
+    df = pd.DataFrame(books, columns=('url', 'book', 'author'))
     if save:
-        df.to_csv(f'tables/books/{name}.csv')
+        df.to_csv(f'{path_to_save}{table_name}.csv')
     if and_return:
         return df
 
 
-def create_table_books_from_table_authors(authors: pd.DataFrame, table_name: str):
-    raise NotImplementedError()
-    link = authors.columns[1]
+def create_all_tables_books(authors: pd.DataFrame, path_to_save: str = 'tables/books/lib_ru/'):
     for i, row in authors.iterrows():
-        author_url, author_name = row.iloc[1], row.iloc[2]
-        df = create_table_books(link+author_url, 'none', True, False)
-        pass
+        url, author, id = row['url'], row['author'], row['id']
+        id = str(id).zfill(6)
+        create_table_books(url, id, author, path_to_save)
 
 
 def download_book(url: str, book_name: str = None, path_to_save: str = 'library/'):
@@ -107,7 +138,7 @@ def download_books(
         if len(temp_df):
             download_book(link+temp_df.iloc[0][link])
         else:
-            print(f"The book '{book}' by {author} not found.")
+            logging(f"The book '{book}' by {author} not found.")
 
 
 if __name__ == "__main__":
