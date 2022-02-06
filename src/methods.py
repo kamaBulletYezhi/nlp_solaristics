@@ -5,19 +5,30 @@ import pandas as pd
 import time
 
 
-
 main_url = 'http://lib.ru/'
 """
 URL pattern: main_url + section_url + author_url + book_url = url
 """
+sections = [
+    'INOOLD/', 'INPROZ/', 'PROZA/',
+    'RUSSLIT/', 'LITRA/', 'PXESY/',
+    'NEWPROZA/', 'POEEAST/', 'POECHIN/',
+    'TALES/', 'PRIKL/', 'RAZNOE/',
+    'SOCFANT/', 'INOFANT/', 'RUFANT/',
+    'RUSS_DETEKTIW/', 'FILOSOF/'
+]
 
 
-def logging(err_msg: str, file: str = 'err'):
+def logging(err_msg: str,
+            file: str = 'err'):
+
     with open(file, 'a') as err:
         err.write(f'{err_msg}\n{datetime.now()}\n\n')
 
 
-def get_page(url, n_attempts=1):
+def get_page(url,
+             n_attempts=1):
+
     for i in range(n_attempts):
         r = requests.get(url)
         if r.status_code == 200:
@@ -32,7 +43,10 @@ def right_tag(tag: BeautifulSoup):
     return tag.name == 'a' and tag.parent.name == 'li'
 
 
-def create_table_authors(url: str, name: str, and_return: bool = False, save: bool = True):
+def create_table_authors(url: str,
+                         name: str,
+                         and_return: bool = False,
+                         save: bool = True):
     """
 
     :param url: str
@@ -46,16 +60,19 @@ def create_table_authors(url: str, name: str, and_return: bool = False, save: bo
     """
     page = get_page(url)
     soup = BeautifulSoup(page, "html.parser")
-    authors = ((url + a["href"], ' '.join(a.text.split()), str(i).zfill(6)) for i, a in enumerate(soup.find_all(right_tag)))
+    authors = ((url + a["href"],
+                ' '.join(a.text.split())) for i, a in enumerate(soup.find_all(right_tag)))
 
-    df = pd.DataFrame(authors, columns=('url', 'author', 'id'))
+    df = pd.DataFrame(authors, columns=('url', 'author'))
     if save:
         df.to_csv(f'tables/authors/{name}.csv')
     if and_return:
         return df
 
 
-def create_all_authors_table(sections: list[str], main_url: str = main_url):
+def create_all_authors_table(sections: list[str] = sections,
+                             main_url: str = main_url):
+
     tables = []
     for section in sections:
         tables.append(
@@ -70,7 +87,8 @@ def create_table_books(url: str,
                        author: str,
                        path_to_save: str = 'tables/books/',
                        and_return: bool = False,
-                       save: bool = True, waiting_time: float = 1.):
+                       save: bool = True,
+                       waiting_time: float = 1.5):
     """
 
     :param url: str
@@ -104,11 +122,16 @@ def create_table_books(url: str,
         return df
 
 
-def create_all_tables_books(authors: pd.DataFrame, path_to_save: str = 'tables/books/lib_ru/'):
+def create_all_tables_books(authors: pd.DataFrame,
+                            start_n: int = 0,
+                            path_to_save: str = 'tables/books/lib_ru/'):
+
     for i, row in authors.iterrows():
-        url, author, id = row['url'], row['author'], row['id']
-        id = str(id).zfill(6)
-        create_table_books(url, id, author, path_to_save)
+        url, author = row['url'], row['author']
+        if i < start_n:
+            continue
+        i = str(i).zfill(6)
+        create_table_books(url, i, author, path_to_save)
 
 
 def download_book(url: str, book_name: str = None, path_to_save: str = 'library/'):
@@ -133,20 +156,8 @@ def download_books(
     link = existing_books.columns[1]
     for i, row in books_for_downloading.iterrows():
         author, book = row['author'], row['book']
-        # book_name = row['file']
         temp_df = existing_books.loc[(existing_books['author'] == author) & (existing_books['book'] == book)]
         if len(temp_df):
             download_book(link+temp_df.iloc[0][link])
         else:
             logging(f"The book '{book}' by {author} not found.")
-
-
-if __name__ == "__main__":
-    # temp_url = "http://www.lib.ru/INOOLD/DUMA/tri.txt"
-    # duma = "http://www.lib.ru/INOOLD/DUMA/"
-    # create_table_books(duma, 'DUMA')
-    #create_table_authors('http://lib.ru/INOOLD/', 'INOOLD')
-    pass
-
-
-
