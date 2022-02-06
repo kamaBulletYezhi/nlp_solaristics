@@ -12,10 +12,12 @@ sections = [
 ]
 
 if __name__ == "__main__":
-    path = 'tables/books/DUMA.csv'
+    path = 'tables/authors/PROZA.csv'
     df = pd.read_csv(path)
-
-    methods.download_books(df, df)
+    #methods.create_table_books_from_table_authors(df, 'ALLPROZA')
+    #methods.create_table_authors(main_url+sections[2], sections[2][:-1])
+    #methods.create_table_books(main_url+sections[2], sections[2][:-1])
+    #methods.download_books(df, df)
     #methods.download_all_books(path)
     # temp_url = "http://www.lib.ru/INOOLD/DUMA/tri.txt"
     #duma = "http://www.lib.ru/INOOLD/DUMA/"

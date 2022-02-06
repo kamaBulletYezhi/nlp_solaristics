@@ -71,6 +71,15 @@ def create_table_books(url: str, name: str, and_return: bool = False, save: bool
         return df
 
 
+def create_table_books_from_table_authors(authors: pd.DataFrame, table_name: str):
+    raise NotImplementedError()
+    link = authors.columns[1]
+    for i, row in authors.iterrows():
+        author_url, author_name = row.iloc[1], row.iloc[2]
+        df = create_table_books(link+author_url, 'none', True, False)
+        pass
+
+
 def download_book(url: str, book_name: str = None, path_to_save: str = 'library/'):
     page = get_page(url)
     if page is None:
@@ -83,13 +92,6 @@ def download_book(url: str, book_name: str = None, path_to_save: str = 'library/
         tag.unwrap()
     with open(path_to_save + book_name, 'w') as file:
         file.write(soup.text)
-
-
-def download_all_books(path: str):
-    df = pd.read_csv(path)
-    link = df.columns[1]
-    for i, row in df.iterrows():
-        download_book(link+row[1], f'test_{i:03d}.txt')
 
 
 def download_books(
@@ -106,14 +108,6 @@ def download_books(
             download_book(link+temp_df.iloc[0][link])
         else:
             print(f"The book '{book}' by {author} not found.")
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
