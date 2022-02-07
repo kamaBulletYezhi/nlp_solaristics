@@ -132,7 +132,6 @@ def create_table_books(url: str,
         logging(f'URL "{url}" is not available. Author: {author}.')
         return None
     soup = BeautifulSoup(page, "html.parser")
-    # author = ' '.join(soup.head.title.text.split()[1:])
     books = ((url + a["href"], ' '.join(a.text.split()), author) for a in soup.find_all(right_tag))
 
     df = pd.DataFrame(books, columns=('url', 'book', 'author'))
@@ -163,10 +162,10 @@ def create_all_books_table(dir_path: str = 'tables/books/lib_ru/',
     tables = []
     for name in names:
         tables.append(
-            pd.read_csv(dir_path + name)
+            pd.read_csv(dir_path + name, index_col=False)
         )
-    df = pd.concat(tables)
-    df.to_csv(table_path+table_name)
+    df = pd.concat(tables, ignore_index=True)
+    df.to_csv(table_path+table_name, index=False)
 
 
 """
