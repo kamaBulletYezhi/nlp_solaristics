@@ -174,24 +174,30 @@ def create_all_books_table(dir_path: str = 'tables/books/lib_ru/',
 """
 
 
-def download_book(url: str, book_name: str = None, path_to_save: str = 'library/'):
+def download_book(url: str, book_name: str = None, path_to_save: str = 'library/books/'):
     page = get_page(url)
     if page is None:
         return
-    soup = BeautifulSoup(page, "html.parser").body.pre.pre
+    try:
+        soup = BeautifulSoup(page, "html.parser").body.pre.pre
+    except Exception:
+        logging(f"Problem with {book_name} book from {url}")
+        return False
     if book_name is None:
-        book_name = str(soup.find('h2').text) + '.txt'
+        book_name = str(soup.find('h2').text)
+    book_name += '.txt'
     soup.pre.decompose()
     for tag in soup.find_all(['a', 'b', 'ul', 'h2']):
         tag.unwrap()
     with open(path_to_save + book_name, 'w') as file:
         file.write(soup.text)
+    return True
 
 
 def download_books(
         books_for_downloading: pd.DataFrame,
         existing_books: pd.DataFrame,
-        path_to_save: str = 'library/'):
+        path_to_save: str = 'library/books/'):
 
     link = existing_books.columns[1]
     for i, row in books_for_downloading.iterrows():

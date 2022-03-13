@@ -1,162 +1,33 @@
-error on http://lib.ru/RUSS_DETEKTIW/http://lit.lib.ru/s/sigow_a_p/: status code = 404
-2022-02-07 01:12:17.265145
+Problem with 0061 book from http://az.lib.ru/z/zamjatin_e_i/text_0050.shtml
+2022-03-13 23:19:06.055863
 
-URL "http://lib.ru/RUSS_DETEKTIW/http://lit.lib.ru/s/sigow_a_p/" is not available. Author: Сигов Анатолий.
-2022-02-07 01:12:17.265305
+Problem with 0062 book from http://az.lib.ru/z/zamjatin_e_i/text_0010.shtml
+2022-03-13 23:19:09.317738
 
-error on http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/s/starodymow_n_a/: status code = 404
-2022-02-07 01:12:20.649341
+error on http://lib.ru/INPROZ/../SELINGER/sel_1.txt: status code = 404
+2022-03-13 23:25:52.955563
 
-URL "http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/s/starodymow_n_a/" is not available. Author: Стародымов Николай.
-2022-02-07 01:12:20.649637
+Problem with 0360 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_0160.shtml
+2022-03-13 23:40:02.963115
 
-error on http://lib.ru/RUSS_DETEKTIW/http://lit.lib.ru/u/uwarow_a_w/: status code = 404
-2022-02-07 01:12:25.587905
+Problem with 0361 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_0180.shtml
+2022-03-13 23:40:06.064586
 
-URL "http://lib.ru/RUSS_DETEKTIW/http://lit.lib.ru/u/uwarow_a_w/" is not available. Author: Уваров Александр.
-2022-02-07 01:12:25.588055
+Problem with 0362 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_0230.shtml
+2022-03-13 23:40:08.592180
 
-error on http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/c/chebyshew_aleksandr_borisowich/: status code = 404
-2022-02-07 01:12:31.982075
+Problem with 0363 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_1938_petr_perviy.shtml
+2022-03-13 23:40:12.001765
 
-URL "http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/c/chebyshew_aleksandr_borisowich/" is not available. Author: Чебышев Александр.
-2022-02-07 01:12:31.982381
+Problem with 0364 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_0040.shtml
+2022-03-13 23:40:15.076088
 
-error on http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/c/chudakowa_k/: status code = 404
-2022-02-07 01:12:35.284699
+Problem with 0365 book from http://lib.ru/TALES/../TOLSTOJA/buratino.txttext_0100.shtml
+2022-03-13 23:40:18.123511
 
-URL "http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/c/chudakowa_k/" is not available. Author: Чудакова Катя.
-2022-02-07 01:12:35.284879
+error on http://lib.ru/INPROZ/PRUST/http://lit.lib.ru/g/godin_a/text_0010.shtml: status code = 404
+2022-03-13 23:43:59.917312
 
-error on http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/s/shtejman_b_e/: status code = 404
-2022-02-07 01:12:40.105701
-
-URL "http://lib.ru/RUSS_DETEKTIW/http://det.lib.ru/s/shtejman_b_e/" is not available. Author: Штейман Борис.
-2022-02-07 01:12:40.105924
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/a/abdullin_a_r/: status code = 404
-2022-02-07 01:13:52.322208
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/a/abdullin_a_r/" is not available. Author: Айдар Абдуллин.
-2022-02-07 01:13:52.322334
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/g/gruzman_g/: status code = 404
-2022-02-07 01:14:00.975324
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/g/gruzman_g/" is not available. Author: Генрих Грузман.
-2022-02-07 01:14:00.975461
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/k/kazin_a_l/: status code = 404
-2022-02-07 01:14:04.202790
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/k/kazin_a_l/" is not available. Author: Александр Казин.
-2022-02-07 01:14:04.202898
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/i/irhin_w_j/: status code = 404
-2022-02-07 01:14:05.839394
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/i/irhin_w_j/" is not available. Author: Ирхин, Кацнельсон.
-2022-02-07 01:14:05.839515
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/k/kornjushenko_d_i/: status code = 404
-2022-02-07 01:14:09.212295
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/k/kornjushenko_d_i/" is not available. Author: Дмитрий Корнющенко.
-2022-02-07 01:14:09.212427
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/m/marikowskij_p_i/: status code = 404
-2022-02-07 01:14:18.709271
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/m/marikowskij_p_i/" is not available. Author: Павел Мариковский.
-2022-02-07 01:14:18.709410
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/r/ruchko_s_w/: status code = 404
-2022-02-07 01:14:23.832633
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/r/ruchko_s_w/" is not available. Author: Сергей Ручко.
-2022-02-07 01:14:23.832806
-
-error on http://lib.ru/FILOSOF/http://lit.lib.ru/w/wladislaw_t/: status code = 404
-2022-02-07 01:14:27.148670
-
-URL "http://lib.ru/FILOSOF/http://lit.lib.ru/w/wladislaw_t/" is not available. Author: Тарасенко Владислав.
-2022-02-07 01:14:27.148816
-
-error on http://lib.ru/FILOSOF/http://www.philosophy2.ru/library/library.html: status code = 404
-2022-02-07 01:14:46.019836
-
-URL "http://lib.ru/FILOSOF/http://www.philosophy2.ru/library/library.html" is not available. Author: Сайт "Philosophy2.ru".
-2022-02-07 01:14:46.019984
-
-error on http://lib.ru/FILOSOF/http://www.chat.ru/~yankos/ya.html: status code = 404
-2022-02-07 01:14:47.578101
-
-URL "http://lib.ru/FILOSOF/http://www.chat.ru/~yankos/ya.html" is not available. Author: Философия на странице Славы Янко.
-2022-02-07 01:14:47.578291
-
-error on http://lib.ru/FILOSOF/http://www.materialist.kcn.ru/: status code = 404
-2022-02-07 01:14:49.224102
-
-URL "http://lib.ru/FILOSOF/http://www.materialist.kcn.ru/" is not available. Author: А.Хоцей.
-2022-02-07 01:14:49.224298
-
-error on http://lib.ru/FILOSOF/http://philos.msu.ru/library.php: status code = 404
-2022-02-07 01:14:50.866481
-
-URL "http://lib.ru/FILOSOF/http://philos.msu.ru/library.php" is not available. Author: Библиотека философского факультета МГУ.
-2022-02-07 01:14:50.866721
-
-error on http://lib.ru/FILOSOF/http://www.ruthenia.ru/logos/: status code = 404
-2022-02-07 01:14:52.529214
-
-URL "http://lib.ru/FILOSOF/http://www.ruthenia.ru/logos/" is not available. Author: Философско-литературный журнал "Логос".
-2022-02-07 01:14:52.529371
-
-error on http://lib.ru/FILOSOF/http://anthropologia.spbu.ru: status code = 404
-2022-02-07 01:14:54.176378
-
-URL "http://lib.ru/FILOSOF/http://anthropologia.spbu.ru" is not available. Author: Кафедра философской антропологии философского факультета СПбГУ.
-2022-02-07 01:14:54.176591
-
-error on http://lib.ru/FILOSOF/http://www.sigrompism.ru: status code = 404
-2022-02-07 01:14:55.806025
-
-URL "http://lib.ru/FILOSOF/http://www.sigrompism.ru" is not available. Author: Sigitas Rudzevicius (Sig Romp) Sigrompism.
-2022-02-07 01:14:55.806171
-
-error on http://lib.ru/FILOSOF/http://filosofia.ru/: status code = 404
-2022-02-07 01:14:57.371670
-
-URL "http://lib.ru/FILOSOF/http://filosofia.ru/" is not available. Author: Filosofia.ru: Библиотека философии и религии.
-2022-02-07 01:14:57.371828
-
-error on http://lib.ru/FILOSOF/http://nounivers.narod.ru: status code = 404
-2022-02-07 01:14:58.927646
-
-URL "http://lib.ru/FILOSOF/http://nounivers.narod.ru" is not available. Author: "Концепция двух продолжений" - онтология и теория познания, библиотека,переводы.
-2022-02-07 01:14:58.927728
-
-error on http://lib.ru/FILOSOF/http://ihtik.lib.ru/: status code = 404
-2022-02-07 01:15:00.491848
-
-URL "http://lib.ru/FILOSOF/http://ihtik.lib.ru/" is not available. Author: Библиотека Ихтика (около 1.5Гб е-текстов по философии - учебники, классика, монографии, справочники, диссертации).
-2022-02-07 01:15:00.492000
-
-error on http://lib.ru/FILOSOF/http://phenomen.ru/catalog/: status code = 404
-2022-02-07 01:15:02.045389
-
-URL "http://lib.ru/FILOSOF/http://phenomen.ru/catalog/" is not available. Author: Каталог Интеллектуальных Ресурсов.
-2022-02-07 01:15:02.045585
-
-error on http://lib.ru/FILOSOF/http://arcto.ru/: status code = 404
-2022-02-07 01:15:03.695928
-
-URL "http://lib.ru/FILOSOF/http://arcto.ru/" is not available. Author: Арктогея: Философский портал.
-2022-02-07 01:15:03.696095
-
-error on http://lib.ru/FILOSOF/http://www.philprob.narod.ru/: status code = 404
-2022-02-07 01:15:05.329800
-
-URL "http://lib.ru/FILOSOF/http://www.philprob.narod.ru/" is not available. Author: Международный институт философии и проблем общества.
-2022-02-07 01:15:05.329944
+error on http://lib.ru/INPROZ/PRUST/wremya.txt: status code = 404
+2022-03-13 23:44:02.955194
 
